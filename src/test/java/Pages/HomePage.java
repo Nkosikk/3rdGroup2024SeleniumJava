@@ -25,6 +25,6 @@ public class HomePage {
 
         new WebDriverWait(driver, Duration.ofSeconds(15)).until(ExpectedConditions.visibilityOf(productTitle_xpath));
         String productTitle = productTitle_xpath.getText();
-        Assert.assertEquals(productTitle, "Products");
+        Assert.assertEquals(productTitle, "ProductsNkosi");
     }
 }

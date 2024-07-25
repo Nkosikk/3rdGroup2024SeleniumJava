@@ -30,7 +30,7 @@ Screenshots/
 build/
 !**/src/main/**/build/
 !**/src/test/**/build/
-
+Reports/
 ### VS Code ###
 .vscode/
 
