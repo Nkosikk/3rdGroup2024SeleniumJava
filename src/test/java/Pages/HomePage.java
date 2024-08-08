@@ -45,6 +45,7 @@ public class HomePage {
         Assert.assertEquals(backpackInformation,"Sauce Labs Backpack");
     }
     public void verifyBikeLightItemIsAddedToCart(){
+
         bikeLightItem.click();
     }
     public void verifyNumberOfItemsInCart(){

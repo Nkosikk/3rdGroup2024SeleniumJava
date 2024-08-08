@@ -8,8 +8,8 @@ import org.testng.annotations.Test;
 @Test
 public class loginTests extends Base {
 
-
     public void enterUsernameTests() {
+
         loginPage.enterUsername(ReadData.username);
     }
 
