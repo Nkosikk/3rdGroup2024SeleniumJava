@@ -24,4 +24,9 @@ public class BrowserFactory {
         driver.get(url);
         return driver;
     }
+    @Test
+    public void test(){
+
+        startBrowser ("Chrome","https://www.saucedemo.com/");
+    }
 }

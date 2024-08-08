@@ -5,44 +5,43 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 
 import java.time.Duration;
 
 public class LoginPage {
-
     WebDriver driver;
+    //add elements
 
     @FindBy(xpath = "//input[contains(@id,'user-name')]")
-    WebElement username_xpath;
+    WebElement username_id;
 
     @FindBy(xpath = "//input[contains(@id,'password')]")
-    WebElement password_xpath;
+    WebElement password_id;
 
-    @FindBy(id = "login-button")
-    WebElement loginButton_id;
+    @FindBy(xpath = "//input[@id='login-button']")
+    WebElement login_id;
 
-    @FindBy(xpath = "//h3[@data-test='error'][contains(.,'Epic sadface: Username and password do not match any user in this service')]")
+    @FindBy(xpath = "//div[@class='error-message-container error'][contains(.,'Epic sadface: Username is required')]")
     WebElement loginError_xpath;
 
-
-    public LoginPage(WebDriver driver){
-        this.driver=driver;
+    //constructor
+    public LoginPage(WebDriver driver) {
+        this.driver = driver;
     }
 
-    public void enterUsername(String username){
-        new WebDriverWait(driver, Duration.ofSeconds(15)).until(ExpectedConditions.visibilityOf(username_xpath));
-        username_xpath.clear();
-        username_xpath.sendKeys(username);
+    //reading from excel
+    public void enterUsername(String username) {
+        username_id.sendKeys(username);
+        new WebDriverWait(driver, Duration.ofSeconds(15)).until(ExpectedConditions.visibilityOf(username_id));
     }
 
-    public void enterPassword(String password){
-        password_xpath.clear();
-        password_xpath.sendKeys(password);
+    public void enterPassword(String password) {
+        password_id.sendKeys(password);
+
     }
 
-    public void clickLogin(){
-        loginButton_id.click();
+    public void clickLogin() {
+        login_id.click();
     }
 
     public void verifyErrorMessageInLogin() {
@@ -50,9 +49,6 @@ public class LoginPage {
         new WebDriverWait(driver, Duration.ofSeconds(15)).until(ExpectedConditions.visibilityOf(loginError_xpath));
         loginError_xpath.isDisplayed();
     }
-
-
-
 
 }
 
