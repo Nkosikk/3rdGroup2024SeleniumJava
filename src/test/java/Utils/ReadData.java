@@ -10,24 +10,35 @@ import java.io.IOException;
 
 public class ReadData {
 
-    String testDataDir = System.getProperty("user.dir") + "/src/test/java/TestData/TestData.xlsx";
+    static String testDataDir = System.getProperty("user.dir") + "/src/test/java/TestData/TestData.xlsx";
 
-    FileInputStream fileInputStream = new FileInputStream(testDataDir);
-    XSSFWorkbook workbook = new XSSFWorkbook(fileInputStream);
+    static FileInputStream fileInputStream;
+
+    static {
+        try {
+            fileInputStream = new FileInputStream(testDataDir);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    static XSSFWorkbook workbook;
+
+    static {
+        try {
+            workbook = new XSSFWorkbook(fileInputStream);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 
     public ReadData() throws IOException {
     }
 
-    XSSFSheet sheet =workbook.getSheet("Login Details");
+    static XSSFSheet sheet =workbook.getSheet("Login Details");
 
-    public String username =sheet.getRow(1).getCell(2).getStringCellValue();
-    public String pasword =sheet.getRow(8).getCell(3).getStringCellValue();
-
-    @Test
-    public void test(){
-        System.out.println(username);
-        System.out.println(pasword);
-    }
+    public static String username =sheet.getRow(1).getCell(0).getStringCellValue();
+    public static String password =sheet.getRow(1).getCell(1).getStringCellValue();
 
 }
