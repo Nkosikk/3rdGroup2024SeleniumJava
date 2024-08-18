@@ -6,7 +6,7 @@
     </listeners>
     <test verbose="2" preserve-order="true" name="Sauce Demo">
         <classes>
-            <class name="Tests.loginTests"></class>
+            <class name="Tests.EndToEndTests"></class>
         </classes>
     </test>
 </suite>
